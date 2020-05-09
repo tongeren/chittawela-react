@@ -1,0 +1,13 @@
+.svg-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    fill: var(--color-hair);
+    stroke: var(--color-hair);
+    
+    border-radius: 50%;
+    height: 5rem;
+    width: 5rem;
+}

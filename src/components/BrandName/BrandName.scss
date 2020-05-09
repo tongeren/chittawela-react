@@ -1,0 +1,12 @@
+@import "../../sass/abstracts/mixins";
+
+.brandname {   
+    font-family: 'Caveat', cursive;
+    font-weight: 400;
+    font-size: 4rem; 
+    letter-spacing: .2rem;
+    
+    /*
+    @include calcLineHeight(4rem); 
+    */
+}

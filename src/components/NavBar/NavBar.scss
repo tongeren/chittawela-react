@@ -1,0 +1,59 @@
+.navbar {
+    display: flex;
+    position: fixed; 
+    top: -100%;
+    left: 0;
+    width: 100vw;
+    height: $navigation-height;
+
+    z-index: 9999; // on top of everything
+    opacity: 0.8;
+
+    flex-grow: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+    color: white; 
+
+    // initially start animation navbar height above the body
+    animation: slideInDown $navbar-slide-in-duration ease-in-out $navigation-slide-in-begin 1 normal forwards;
+
+    @include respond(portrait) {
+        top: 0; 
+        height: 100%;
+        width: 100%;
+
+        animation: none; 
+    }
+
+    &__logobox {
+        margin-left: $navigation-margin-horizontal; 
+        height: 100%; // take up 100% of the height of the navbar
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        padding: $navigation-margin-vertical 0;
+         
+        // no logobox 
+        @include respond(phone) {
+            display: none;
+        }
+    }
+
+    &__menu {
+        margin-right: $navigation-margin-horizontal; // add margin to the nav in order to align with the section margin
+
+        // menu to full screen if menu is clicked
+        @include respond(portrait) {
+            display: none; // nav should not be there initially
+            width: 100%;
+            height: 100vh;   
+            margin-right: 0;          
+            pointer-events: none;
+        }
+    }
+
+}

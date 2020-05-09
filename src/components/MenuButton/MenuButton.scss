@@ -1,0 +1,162 @@
+.checkbox {
+    display: none;
+}
+
+.button {
+    display: none;
+    z-index: inherit;
+
+    /*
+    @include respond(portrait) {
+        display: block;
+        position: fixed;
+        height: 0.7 * $navigation-height;
+        width: 0.7 * $navigation-height;
+        top: 0;
+        right: 1rem;
+        z-index: 1; // button should be on top of the background
+        border-radius: 50%;
+        text-align: center;
+        cursor: pointer;
+    }
+    */
+
+}
+
+.icon {
+    display: none;
+    z-index: inherit;
+
+    /*
+    @include respond(portrait) {
+        display: block;
+        position: relative;
+        margin-top: 0.5 * 0.7 * $navigation-height;
+    }
+    */
+
+    &,
+    &::before,
+    &::after {
+        display: none;
+        width: 3rem;
+        height: 2px;
+        background-color: white; 
+
+        /*
+        @include respond(portrait) {    
+            display: inline-block;
+        }
+        */
+    }
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        transition: all .2s;
+    }
+
+    &::before { top: -.8rem; }
+    &::after { top: .8rem; }
+}
+
+.background {
+    display: none;
+    z-index: inherit;
+    
+    /*
+    @include respond(portrait) {
+        display: block;
+        position: fixed;
+        top: 0; 
+        right: 1rem;
+        height: 6rem;
+        width: 6rem;
+        border-radius: 50%;
+        z-index: 0; 
+    }
+    */
+}
+
+// navigation part of the navbar
+.nav {
+    margin-right: $navigation-margin-horizontal; // add margin to the nav in order to align with the section margin
+    // z-index: inherit;
+
+    // NAV SWITCHES TO FULL SCREEN 
+    /*
+    @include respond(portrait) {
+        height: 100vh;
+        display: none; // nav should not be there initially
+        pointer-events: none;
+        margin-right: 0; // remove margin-right
+        //opacity: 1; //0
+        //width: 0;
+        width: 100vw;
+        
+
+        // background-color: transparent;
+        // color: transparent;
+        
+    }
+    */
+}
+
+// FUNCTIONALITY
+
+/* on hover make hamburger icon bigger */
+.button:hover .icon::before {
+    top: -1rem;
+}
+
+.button:hover .icon::after {
+    top: 1rem;
+}
+
+/* transform to full screen background and navigation menu */
+.checkbox:checked + .background {
+    animation: fadeInOpacityScaleBackground .8s cubic-bezier(0.86, 0, 0.07, 1) 0s 1 normal forwards running;
+}
+
+.checkbox:checked ~ .nav {
+    display: block;
+    animation: fadeInOpacityGrowWidth .8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0s 1 normal forwards running;
+    pointer-events: auto;
+    
+    /*
+    @include respond(portrait) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    */
+}
+
+/* transform to close icon */
+.checkbox:checked ~ .button .icon {
+    background-color: transparent;
+}
+
+.checkbox:checked ~ .button .icon::before {
+    top: 0;
+    transform: rotate(135deg);
+}
+
+.checkbox:checked ~ .button .icon::after {
+    top: 0;
+    transform: rotate(-135deg);
+}
+
+.checkbox:not(:checked) ~ .button .icon {
+    background-color: white;
+}
+
+.checkbox:not(:checked) ~ .button .icon {
+    transform: rotate(0);
+}
+
+.checkbox:not(:checked) ~ .button .icon {
+    transform: rotate(0);
+}

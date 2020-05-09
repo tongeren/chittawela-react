@@ -1,0 +1,11 @@
+.nav-item {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    z-index: inherit;
+
+    @include respond(portrait) {
+        height: 8.5rem;
+    }
+}
